@@ -7,9 +7,9 @@ Product: Zellous Layouts
 Version: 1.1
 ********************/
 
-{% if site.data.brand.dark_color_hsl %}$brand-primary: {{ site.data.brand.dark_color_hsl }};{% endif %}
-{% if site.data.brand.light_color_hsl %}$brand-secondary: {{ site.data.brand.light_color_hsl }};{% endif %}
-{% if site.data.brand.accent_color_hsl %}$brand-accent: {{ site.data.brand.accent_color_hsl }};{% endif %}
+{% if site.data.brand.dark_color_hsl %}$brand-primary: {{ site.data.brand.dark_color_hsl }};{% else %}$brand-primary: black;{% endif %}
+{% if site.data.brand.light_color_hsl %}$brand-secondary: {{ site.data.brand.light_color_hsl }};{% else %}$brand-secondary: white;{% endif %}
+{% if site.data.brand.accent_color_hsl %}$brand-accent: {{ site.data.brand.accent_color_hsl }};{% else %}$brand-accent: dodgerblue;{% endif %}
 
 // $hero-image: {{ site.pages[0].hero_image }};
 // $hero-image: #{'{{ site.data.brand.logo_image }}'};
