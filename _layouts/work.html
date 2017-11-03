@@ -1,0 +1,109 @@
+---
+layout: default
+parent_page: "Work"
+footer_next_page_text: 'Back to *All work*'
+footer_next_page_link: '/work/'
+---
+{% capture transparent_color %}{{ page.color_hsl | replace: 'hsl(', 'hsla(' | replace: ')', ', 0.95)' }}{% endcapture %}
+
+<!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery c-work__screenshot-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<section class="o-section u-invert" style="background-color: {{ page.color_hsl }};">
+    <div class="o-wrapper">
+        <div class="o-grid">
+            <div class="o-col">
+                <div class="o-img--bg" style="background-image: linear-gradient(to right, {{ page.color_hsl }} 0%, {{ transparent_color }} 20%, {{ transparent_color }} 80%, {{ page.color_hsl }} 100%), url('{{ page.hero_image }}');">
+                    <div class="o-grid o-grid--center">
+                        <div class="o-col u-2/3 u-1/1@lg u-space--top--half">
+                            <a class="o-link" href="/work/"><i class="o-link__arrow fa fa-th"></i>&nbsp;&nbsp;&nbsp;All work</a>
+                        </div>
+                    </div>
+                    <div class="o-grid o-grid--center">
+                        <div class="o-col u-2/3 u-1/1@lg is-padded">
+                            <h1 class="o-heading">{{ page.heading }}</h1>
+                            <div>
+                                {% for tag in page.tags %}
+                                <span class="o-text o-text--pill">{{ tag }}</span>{%
+                                endfor %}
+                            </div>
+                            {% if page.link %}<a class="o-link u-space--top--half" href="{{ page.link }}" target="_blank">{{ page.link_text }} <i class="o-link__arrow fa fa-long-arrow-right"></i></a>{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="o-section is-padded">
+    <div class="o-wrapper">
+        <div class="o-grid o-grid--center">
+            <div class="c-work__content o-col">
+                {{ content }}
+                {% if page.before_after.before_image and page.before_after.after_image and page.before_after.before_image != '/uploads/z-dont-delete.png' and page.before_after.after_image != '/uploads/z-dont-delete.png' %}
+                <div class="o-ba-slider">
+                    <div class="ba-slider">
+                        <img class="o-ba-slider__img" src="{{ page.before_after.after_image }}" alt="">
+                        <span class="o-ba-slider__after o-text o-text--sm">After</span>
+                        <div class="resize">
+                            <img class="o-ba-slider__img" src="{{ page.before_after.before_image }}" alt="">
+                            <span class="o-ba-slider__before o-text o-text--sm">Before</span>
+                        </div>
+                        <span class="o-ba-slider__btn handle"></span>
+                    </div>
+                </div>
+                <span class="o-text o-text--sm">Homepage before/after</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="is-padded u-bg--light">
+    <div class="o-wrapper">
+        <div class="o-grid">
+            <div class="c-work__screenshots o-col">
+                <p class="o-text o-text--heading">WEBSITE SCREENSHOTS</p>
+                {% if page.link %}<p class="o-text o-text--sm">Live site:&nbsp; <a class="o-link o-text--sm" href="{{ page.link }}" target="_blank">{{ page.link_text }} <i class="o-link__arrow fa fa-long-arrow-right"></i></a></p>{% endif %}
+                <div class="c-work__gallery u-space--top--half" id="js-image-gallery">
+                    {% for image in page.final_images %}
+                    <a class="c-work__screenshot" href="{{ image.image }}">
+                        <img class="c-work__screenshot-thumbnail" src="{{ image.thumb_image }}">
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="c-next-page-spacer"></div>
+</section>
+
+<!--split-->
+
+<link href="/js/before-after/before-after.min.css" rel="stylesheet">
+<script src="/js/before-after/before-after.min.js"></script>
+
+<link href="/js/blueimp-gallery/blueimp-gallery.min.css" rel="stylesheet">
+<script src="/js/blueimp-gallery/blueimp-gallery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.ba-slider').beforeAfter();
+
+        document.getElementById('js-image-gallery').onclick = function (event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+            blueimp.Gallery(links, options);
+        };
+    });
+</script>

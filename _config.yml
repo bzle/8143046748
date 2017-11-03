@@ -1,0 +1,65 @@
+split: <!--split-->
+alert_locations:
+  - "All pages"
+  - "Homepage"
+image_anchors:
+  - "left-top"
+  - "center-top"
+  - "right-top"
+  - "left-center"
+  - "center-center"
+  - "right-center"
+  - "left-bottom"
+  - "center-bottom"
+  - "right-bottom"
+collections:
+    site_alerts:
+        _hide_content: true
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+menu_item_types:
+  - "Solo"
+  - "Parent"
+  - "Child"
+  - "Last child"
+
+plugins:
+  - jekyll-assets
+  - mini_magick
+
+assets:
+#  prefix: "/uploads/assets"
+#  digest: true
+  sources:
+    - "/uploads"
+
+# Assets configuration
+#assets:
+#  compress:
+#    css: true
+#    js: true
+#  digest: true
+#  sources:
+#    - _assets/images
+#    - _assets/javascripts
+#    - _assets/stylesheets
+
+#assets:
+#  compress:
+#    css: false | true | default - development: false, production: true
+#    js: false | true | default - development: false, production: true
+#  cache: false | directory | default: .asset-cache
+#  cdn: https://cdn.example.com
+#  skip_baseurl_with_cdn: false
+#  skip_prefix_with_cdn: false
+#  prefix: "/assets"
+#  assets:
+#    - "*.png"
+#    - "bundle.css"
+#  digest: true
+#  sources:
+#    - "_assets/folder"

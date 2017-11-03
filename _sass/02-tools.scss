@@ -1,0 +1,203 @@
+/* 02-tools.scss */
+
+@mixin responsive-only($selector-1, $selector-2, $selector-3) {
+    @each $mediaquery in $mediaqueries {
+        @media (max-width: #{nth($mediaquery, 2)}) {
+            #{$selector-1}\/#{$selector-2}\@#{nth($mediaquery, 1)}#{$selector-3} {
+                @content;
+            }
+        }
+    }
+}
+@mixin stacked-cols() {
+    @each $mediaquery in $mediaqueries {
+        @media (max-width: #{nth($mediaquery, 2)}) {
+            .u-tight-stack .o-col.u-1\/1\@#{nth($mediaquery, 1)} + .o-col.u-1\/1\@#{nth($mediaquery, 1)} {
+                @content;
+            }
+        }
+    }
+}
+@mixin tight-stacked-cols() {
+    @each $mediaquery in $mediaqueries {
+        @media (max-width: #{nth($mediaquery, 2)}) {
+            .u-tight-stack .o-col.u-1\/1\@#{nth($mediaquery, 1)} + .o-col.u-1\/1\@#{nth($mediaquery, 1)} {
+                @content;
+            }
+        }
+    }
+}
+
+
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transition-property($property...) {
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -webkit-transition-property: $property;
+    transition-property:         $property;
+}
+@mixin transition-duration($duration...) {
+    -moz-transition-property:    $duration;
+    -o-transition-property:      $duration;
+    -webkit-transition-property: $duration;
+    transition-property:         $duration;
+}
+@mixin transition-timing-function($timing...) {
+    -moz-transition-timing-function:    $timing;
+    -o-transition-timing-function:      $timing;
+    -webkit-transition-timing-function: $timing;
+    transition-timing-function:         $timing;
+}
+@mixin transition-delay($delay...) {
+    -moz-transition-delay:    $delay;
+    -o-transition-delay:      $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay:         $delay;
+}
+
+
+@mixin ease($time) {
+    -webkit-transition: all $time ease;
+	-moz-transition: all $time ease;
+	-o-transition: all $time ease;
+	-ms-transition: all $time ease;
+	transition: all $time ease;
+}
+@mixin media($size) {
+    $is-last: "last";
+    @each $mediaquery in $mediaqueries {
+        @if $size == unquote("#{nth($mediaquery, 1)}") {
+            $position: #{nth($mediaquery, 3)};
+            @if $position == $is-last {
+                @media (min-width: #{nth($mediaquery, 2)}) { @content ; }
+            } @else {
+                @media (max-width: #{nth($mediaquery, 2)}) { @content ; }
+            }
+        }
+    }
+}
+@mixin vmedia($size) {
+    $is-last: "last";
+    @each $mediaquery in $vmediaqueries {
+        @if $size == unquote("#{nth($mediaquery, 1)}") {
+            $position: #{nth($mediaquery, 3)};
+            @if $position == $is-last {
+                @media (min-height: #{nth($mediaquery, 2)}) { @content ; }
+            } @else {
+                @media (max-height: #{nth($mediaquery, 2)}) { @content ; }
+            }
+        }
+    }
+}
+@function clear-units($value){
+    @if type-of($value) == "number" {
+        @if (unitless($value)) {
+            @return $value;
+        } @else if unit($value) == "em"{
+            @return $value / 1em;
+        } @else if unit($value) == "px" {
+            @return $value / 1px;
+        } @else if unit($value) == "pt" {
+            @return $value / 1pt;
+        }
+    } @else {
+        @warn "Not a number value: #{$value}";
+        @return $value;
+    }
+}
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+@function fraction($first-num, $second-num) {
+    @return percentage($first-num / $second-num);
+}
+
+
+// ----
+// Gradient Mixin
+// https://www.sitepoint.com/building-linear-gradient-mixin-sass/
+// ----
+
+/// Convert angle
+/// @author Chris Eppstein
+/// @param {Number} $value - Value to convert
+/// @param {String} $unit - Unit to convert to
+/// @return {Number} Converted angle
+@function convert-angle($value, $unit) {
+  $convertable-units: deg grad turn rad;
+  $conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+    @return $value
+             / nth($conversion-factors, index($convertable-units, unit($value)))
+             * nth($conversion-factors, index($convertable-units, $unit));
+  }
+  
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+/// Test if `$value` is an angle
+/// @param {*} $value - Value to test
+/// @return {Bool}
+@function is-direction($value) {
+  $is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+  
+  @return $is-direction or $is-angle;
+}
+
+/// Convert a direction to legacy syntax
+/// @param {Keyword | Angle} $value - Value to convert
+/// @require {function} is-direction
+/// @require {function} convert-angle
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction";
+  }
+  
+  $conversion-map: ( 
+    to top          : bottom,
+    to top right    : bottom left,
+    to right top    : left bottom,
+    to right        : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom       : top,
+    to bottom left  : top right,
+    to left bottom  : right top,
+    to left         : right,
+    to left top     : right bottom,
+    to top left     : bottom right
+  );
+    
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+  
+  @return 90deg - convert-angle($value, 'deg');
+}
+
+/// Mixin printing a linear-gradient 
+/// as well as a plain color fallback 
+/// and the `-webkit-` prefixed declaration
+/// @access public
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+  
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+
+

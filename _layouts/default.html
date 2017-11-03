@@ -1,0 +1,125 @@
+---
+---
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lte-ie9 lte-ie8 lte-ie7 lte-ie6"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lte-ie9 lte-ie8 lte-ie7"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lte-ie9 lte-ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lte-ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <!-- BASICS
+        ======================================== -->
+        {% assign base_title = site.data.website.base_title %}{%
+
+
+        if page.page_settings.title and page.page_settings.title != '' %}{%
+            capture title %}{{ page.page_settings.title }} | {{ base_title }}{% endcapture %}{%
+        else %}{%
+            assign title = base_title %}{%
+        endif %}{%
+
+
+        if page.page_settings.class %}{%
+            capture page_class %}c-page--{{ page.page_settings.class }}{% endcapture %}{%
+        endif %}{%
+
+
+        if page.page_settings.no_index and page.page_settings.no_follow %}{%
+            assign meta_robots = "noindex, nofollow" %}{%
+        elsif page.page_settings.no_index %}{%
+            assign meta_robots = "noindex" %}{%
+        elsif page.page_settings.no_follow %}{%
+            assign meta_robots = "nofollow" %}{%
+        endif %}{%
+
+        assign meta_robots = "noindex, nofollow" %}{%
+
+        if meta_robots %}
+        <meta name="robots" content="{{ meta_robots }}">{%
+        endif %}
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {% if page.page_settings.canonical and page.page_settings.canonical != '' %}<link rel="canonical" href="{{ page.page_settings.canonical }}">{% endif %}
+        <title>{{ title }}</title>
+        {% if page.page_settings.description and page.page_settings.description != '' %}<meta name="description" content="{{ page.page_settings.description }}">{% endif %}
+
+        {% if site.data.brand.icons.favicon_image and site.data.brand.icons.favicon_image != '' %}<link rel="shortcut icon" href="{{ site.data.brand.icons.favicon_image }}">{% endif %}
+        {% if site.data.brand.icons.apple_icon_image and site.data.brand.icons.apple_icon_image != '' %}<link rel="apple-touch-icon" sizes="180x180" href="{{ site.data.brand.icons.apple_icon_image }}">{% endif %}
+        {% if site.data.brand.icons.android_icon_image and site.data.brand.icons.android_icon_image != '' %}<link rel="icon" type="image/png" sizes="192x192"  href="{{ site.data.brand.icons.android_icon_image }}">{% endif %}
+
+        <script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js" data-apikey="0180fe471f5f2812862f2aa90cca11e3"></script>
+
+        <!-- BROWSER SUPPORT
+        ======================================== -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- CUSTOM
+        ======================================== -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+        <link rel="stylesheet" href="/css/main.css" type="text/css">
+        <script src="https://use.fontawesome.com/022f8d22c7.js"></script>
+
+        <!-- ANALYTICS
+        ======================================== -->
+        <!-- Google Analytics -->
+
+
+        <!-- Heap Analytics -->
+        
+
+        <!-- VERIFICATIONS
+        ======================================== -->
+
+
+    </head>
+    <body class="{{ page_class }}">
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+        <input type="checkbox" id="c-mobile-nav__btn-checkbox">
+        <label class="c-mobile-nav__btn o-text" for="c-mobile-nav__btn-checkbox"><span class="c-mobile-nav__open-text">MENU</span><span class="c-mobile-nav__close-text">CLOSE</span> <i class="c-mobile-nav__menu-icon fa fa-navicon"></i><i class="c-mobile-nav__close-icon fa fa-close"></i></label>
+        <label class="c-mobile-nav__overlay" for="c-mobile-nav__btn-checkbox"></label>
+        <div class="o-page">
+            <main class="o-main">
+                {% include header.html %}{%
+                assign contentArray = content | split: site.split %}{{ contentArray.first }}
+            </main>{%
+            include footer.html %}
+        </div>
+        <div class="c-mobile-nav">
+            <nav class="c-mobile-nav__items">
+                {% include nav.html nav_location="mobile" %}
+            </nav>
+        </div>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            $('.c-active.c-header-nav__page--child').closest('.c-header-nav__child-items').siblings('.c-header-nav__page--parent').addClass('c-active');
+
+            var c_header_nav__item = $('.c-header-nav__item');
+
+            c_header_nav__item.click(function(){
+                $(this).addClass('is-touch');
+                $(this).toggleClass('is-active');
+                setTimeout(function() {
+                    c_header_nav__item.removeClass('is-active');
+                },4000);
+            });
+            c_header_nav__item.mouseenter(function(){
+              c_header_nav__item.removeClass('is-touch');
+            });
+        </script>
+        {% assign contentArrayLength = contentArray | size %}{% if contentArrayLength > 1  %}{{ contentArray.last }}{% endif %}
+    </body>
+</html>

@@ -1,0 +1,56 @@
+/* 01-settings.scss */
+
+
+
+/*------------------------------------*\
+    $VARIABLES AND LISTS
+\*------------------------------------*/
+$page-width: 1180px;
+$max-page-width: 90vw;
+$spacing-unit: 100px;
+$font-size: 18px;
+$sizes: 12 12, 11 12, 10 12, 9 12, 8 12, 7 12, 6 12, 5 12, 4 12, 3 12, 2 12, 1 12, 10 10, 9 10, 8 10, 7 10, 6 10, 5 10, 4 10, 3 10, 2 10, 1 10, 8 8, 7 8, 6 8, 5 8, 4 8, 3 8, 2 8, 1 8, 6 6, 5 6, 4 6, 3 6, 2 6, 1 6, 5 5, 4 5, 3 5, 2 5, 1 5, 4 4, 3 4, 2 4, 1 4, 3 3, 2 3, 1 3, 2 2, 1 2, 1 1;
+$mediaqueries: xxlg 1441px "last", xlg 1440px "", lg 1024px "", md 768px "", sm 480px "";
+$vmediaqueries: xxlg 1441px "last", xlg 1440px "", lg 1024px "", md 768px "", sm 480px "";
+$col-prefixes: u- width, u-push-- left, u-pull-- right;
+
+
+
+/*------------------------------------*\
+    $COLORS
+\*------------------------------------*/
+
+// $black: #1D144B;
+// $gray: #F7F3FF;
+// $white: #FDFDFF;
+// $brand-primary: #6345DF;
+// $brand-secondary: #00F9CB;
+// $color--alert: hsla(352, 68%, 45%, 1);
+
+$black: change-color($brand-primary, $saturation: 60%, $lightness: 15%);
+$gray: change-color($brand-primary, $saturation: 40%, $lightness: 96%);
+$white: change-color($brand-primary, $saturation: 100%, $lightness: 99.5%);
+
+$color--alert: #D03337;
+
+
+
+/*------------------------------------*\
+    $CSSWIZARDRY-GRIDS__VARIABLES
+\*------------------------------------*/
+
+$gutter:                50px !default;
+$gutter--tight:         2px;
+$push:                  true !default;
+$pull:                  true !default;
+$use-markup-fix:        false !default;
+$breakpoints: (
+    'xxl' '(min-width: 1441px)',
+    'xl' '(max-width: 1440px)',
+    'lg' '(max-width: 1024px)',
+    'md' '(max-width: 768px)',
+    'sm' '(max-width: 480px)'
+) !default;
+$breakpoint-has-widths: ('xxl', 'xl', 'lg', 'md', 'sm') !default;
+$breakpoint-has-push:   ('xxl', 'xl', 'lg', 'md', 'sm') !default;
+$breakpoint-has-pull:   ('xxl', 'xl', 'lg', 'md', 'sm') !default;

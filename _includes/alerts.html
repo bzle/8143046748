@@ -1,0 +1,39 @@
+<section class="o-section o-alerts">
+    <div class="o-wrapper">
+    {% for alert in site.alerts %}
+        {% if alert.alert_status == "Show on every page" %}
+            {% if alert.open_in_new_tab %}
+                {% assign alert_link_target = "_blank" %}
+            {% else %}
+                {% assign alert_link_target = "" %}
+            {% endif %}
+            <div class="o-alert">
+                <div class="o-grid">
+                    <div class="o-col{% if alert.button %} u-3/4 u-2/3@lg u-1/1@md{% endif %}"><p>{{ alert.text_html }}</p></div>
+                    {% if alert.button %}
+                    <div class="editable o-col u-1/4 u-1/3@lg u-1/1@md u-align--right u-align--left@md u-space--top--quarter@md">
+                        <a class="o-btn o-btn--alert" href="{{ alert.button_link }}" target="{{ alert_link_target }}">{{ alert.button }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% elsif include.id == "homepage" and alert.alert_status == "Show on homepage" %}
+            {% if alert.open_in_new_tab %}
+                {% assign alert_link_target = "_blank" %}
+            {% else %}
+                {% assign alert_link_target = "" %}
+            {% endif %}
+            <div class="o-alert">
+                <div class="o-grid">
+                    <div class="o-col{% if alert.button %} u-3/4 u-2/3@lg u-1/1@md{% endif %}"><p>{{ alert.text_html }}</p></div>
+                    {% if alert.button %}
+                    <div class="editable o-col u-1/4 u-1/3@lg u-1/1@md u-align--right u-align--left@md u-space--top--quarter@md">
+                        <a class="o-btn o-btn--alert" href="{{ alert.button_link }}" target="{{ alert_link_target }}">{{ alert.button }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>
