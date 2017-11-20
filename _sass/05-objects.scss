@@ -442,6 +442,15 @@ h3,
 
 
 
+.o-gallery--md > .o-col > a {
+    max-height: 200px;
+    overflow: hidden;
+}
+.o-gallery--md > .o-col > a > img {
+    min-height: 200px;
+}
+
+
 
 .o-wrapper {
     margin: 0 auto;
