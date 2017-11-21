@@ -396,13 +396,19 @@ h3,
     padding: 0 12px;
 }
 
-
 .o-grid--tight {
     margin-left: (-$gutter--tight);
 }
 .o-grid--tight .o-col {
     padding-left: $gutter--tight;
     padding-bottom: $gutter--tight;
+}
+.o-grid--lg {
+    margin-left: (-$gutter--lg);
+}
+.o-grid--lg .o-col {
+    padding-left: $gutter--lg;
+    padding-bottom: $gutter--lg;
 }
 .o-grid--normal {
     margin-left: (-$gutter);
