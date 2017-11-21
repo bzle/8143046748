@@ -1772,6 +1772,15 @@ select.o-selectize {
     margin-top: $gutter--tight;
     margin-top: 0;
 }
+.o-grid--lg > .u-1\/1 + .u-1\/1,
+.o-grid--lg > .u-1\/2 + .u-1\/2 + .u-1\/2,
+.o-grid--lg > .u-1\/3 + .u-1\/3 + .u-1\/3 + .u-1\/3,
+.o-grid--lg > .u-1\/4 + .u-1\/4 + .u-1\/4 + .u-1\/4 + .u-1\/4,
+.o-grid--lg > .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5,
+.o-grid--lg > .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 {
+    margin-top: $gutter--lg;
+    margin-top: 0;
+}
 @include media(xxlg) {
     .u-1\/1\@xxlg + .u-1\/1\@xxlg,
     .u-1\/2\@xxlg + .u-1\/2\@xxlg + .u-1\/2\@xxlg,
@@ -1785,6 +1794,12 @@ select.o-selectize {
     .o-grid--tight > .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg {
         margin-top: $gutter--tight;
         margin-top: 0;
+    }
+    .o-grid--lg > .u-1\/1\@xxlg + .u-1\/1\@xxlg,
+    .o-grid--lg > .u-1\/2\@xxlg + .u-1\/2\@xxlg + .u-1\/2\@xxlg,
+    .o-grid--lg > .u-1\/3\@xxlg + .u-1\/3\@xxlg + .u-1\/3\@xxlg + .u-1\/3\@xxlg,
+    .o-grid--lg > .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg + .u-1\/4\@xxlg {
+        margin-top: $gutter--lg;
     }
 }
 @include media(xlg) {
@@ -1801,6 +1816,12 @@ select.o-selectize {
         margin-top: $gutter--tight;
         margin-top: 0;
     }
+    .o-grid--lg > .u-1\/1\@xlg + .u-1\/1\@xlg,
+    .o-grid--lg > .u-1\/2\@xlg + .u-1\/2\@xlg + .u-1\/2\@xlg,
+    .o-grid--lg > .u-1\/3\@xlg + .u-1\/3\@xlg + .u-1\/3\@xlg + .u-1\/3\@xlg,
+    .o-grid--lg > .u-1\/4\@xlg + .u-1\/4\@xlg + .u-1\/4\@xlg + .u-1\/4\@xlg + .u-1\/4\@xlg {
+        margin-top: $gutter--lg;
+    }
 }
 @include media(lg) {
     .u-1\/1\@lg + .u-1\/1\@lg,
@@ -1815,6 +1836,12 @@ select.o-selectize {
     .o-grid--tight > .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg {
         margin-top: $gutter--tight;
         margin-top: 0;
+    }
+    .o-grid--lg > .u-1\/1\@lg + .u-1\/1\@lg,
+    .o-grid--lg > .u-1\/2\@lg + .u-1\/2\@lg + .u-1\/2\@lg,
+    .o-grid--lg > .u-1\/3\@lg + .u-1\/3\@lg + .u-1\/3\@lg + .u-1\/3\@lg,
+    .o-grid--lg > .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg + .u-1\/4\@lg {
+        margin-top: $gutter--lg;
     }
 }
 @include media(md) {
@@ -1837,6 +1864,11 @@ select.o-selectize {
         margin-top: $gutter--tight;
         margin-top: 0;
     }
+    .o-grid--lg > .u-1\/1\@md + .u-1\/1\@md,
+    .o-grid--lg > .u-1\/2\@md + .u-1\/2\@md + .u-1\/2\@md,
+    .o-grid--lg > .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md {
+        margin-top: $gutter--lg;
+    }
 }
 @include media(sm) {
     .u-1\/1\@sm + .u-1\/1\@sm,
@@ -1853,6 +1885,14 @@ select.o-selectize {
     .o-grid--tight\@sm > .u-1\/1\@sm + .u-1\/1\@sm {
         margin-top: $gutter--tight;
         margin-top: 0;
+    }
+    .o-grid--lg > .u-1\/1\@sm + .u-1\/1\@sm,
+    .o-grid--lg > .u-1\/2\@sm + .u-1\/2\@sm + .u-1\/2\@sm,
+    .o-grid--lg > .u-1\/3\@sm + .u-1\/3\@sm + .u-1\/3\@sm + .u-1\/3\@sm {
+        margin-top: $gutter--lg;
+    }
+    .o-grid--lg\@sm > .u-1\/1\@sm + .u-1\/1\@sm {
+        margin-top: $gutter--lg;
     }
 }
 
