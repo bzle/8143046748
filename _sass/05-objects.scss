@@ -1909,9 +1909,9 @@ select.o-selectize {
     .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md {
         margin-top: $gutter;
     }
-    .o-grid > .u-1\/1\@md + .u-1\/1\@md,
-    .o-grid > .u-1\/2\@md + .u-1\/2\@md + .u-1\/2\@md,
-    .o-grid > .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md + .u-1\/3\@md {
+    .o-grid\@md > .u-1\/1 + .u-1\/1,
+    .o-grid\@md > .u-1\/2 + .u-1\/2 + .u-1\/2,
+    .o-grid\@md > .u-1\/3 + .u-1\/3 + .u-1\/3 + .u-1\/3 {
         margin-top: $gutter;
     }
     .o-grid--tight > .u-1\/1\@md + .u-1\/1\@md,
