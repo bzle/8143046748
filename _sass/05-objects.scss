@@ -1538,11 +1538,20 @@ select.o-selectize {
 .u-space--bottom--half {
     margin-bottom: $spacing-unit / 2;
 }
+.u-space--bottom--half--neg {
+    margin-bottom: $spacing-unit * -0.5;
+}
 .u-space--bottom--quarter {
     margin-bottom: $spacing-unit / 4;
 }
+.u-space--bottom--quarter--neg {
+    margin-bottom: $spacing-unit * -0.25;
+}
 .u-space--bottom--1\/8 {
     margin-bottom: $spacing-unit / 8;
+}
+.u-space--bottom--1\/8--neg {
+    margin-bottom: $spacing-unit * -0.125;
 }
 .u-space--bottom--double {
     margin-bottom: $spacing-unit * 2;
@@ -1550,8 +1559,14 @@ select.o-selectize {
 .u-space--bottom--double--neg {
     margin-bottom: $spacing-unit * -2;
 }
+.u-space--bottom--quad {
+    margin-bottom: $spacing-unit * 4;
+}
 .u-space--bottom--quad--neg {
     margin-bottom: $spacing-unit * -4;
+}
+.u-space--bottom--octave {
+    margin-bottom: $spacing-unit * 8;
 }
 .u-space--bottom--octave--neg {
     margin-bottom: $spacing-unit * -8;
@@ -1562,26 +1577,44 @@ select.o-selectize {
 .u-space--top--neg {
     margin-top: $spacing-unit * -1;
 }
-.u-space--top--half--neg {
-    margin-top: $spacing-unit * -0.5;
-}
-.u-space--top--none {
-    margin-top: 0;
-}
 .u-space--top--half {
     margin-top: $spacing-unit / 2;
+}
+.u-space--top--half--neg {
+    margin-top: $spacing-unit * -0.5;
 }
 .u-space--top--quarter {
     margin-top: $spacing-unit / 4;
 }
+.u-space--top--quarter--neg {
+    margin-top: $spacing-unit * -0.25;
+}
 .u-space--top--1\/8 {
     margin-top: $spacing-unit / 8;
+}
+.u-space--top--1\/8--neg {
+    margin-top: $spacing-unit * -0.125;
 }
 .u-space--top--double {
     margin-top: $spacing-unit * 2;
 }
 .u-space--top--double--neg {
     margin-top: $spacing-unit * -2;
+}
+.u-space--top--quad {
+    margin-top: $spacing-unit * 4;
+}
+.u-space--top--quad--neg {
+    margin-top: $spacing-unit * -4;
+}
+.u-space--top--octave {
+    margin-top: $spacing-unit * 8;
+}
+.u-space--top--octave--neg {
+    margin-top: $spacing-unit * -8;
+}
+.u-space--top--none {
+    margin-top: 0;
 }
 
 
