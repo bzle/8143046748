@@ -1815,6 +1815,7 @@ select.o-selectize {
 .o-grid--lg > .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5 + .u-1\/5,
 .o-grid--lg > .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 + .u-1\/6 {
     margin-top: $gutter--lg;
+    margin-top: 0;
 }
 @include media(xxlg) {
     .u-1\/1\@xxlg + .u-1\/1\@xxlg,
