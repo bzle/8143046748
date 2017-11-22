@@ -120,7 +120,7 @@
         
         
         {% if site.data.website.inject_code.add_code_to_head_markdown %}
-            {{ site.data.website.inject_code.add_code_to_head_markdown | textilize }}
+            {{ site.data.website.inject_code.add_code_to_head_markdown | replace:'```','' }}
         {% endif %}
         
         
@@ -172,7 +172,7 @@
         {% assign contentArrayLength = contentArray | size %}{% if contentArrayLength > 1  %}{{ contentArray.last }}{% endif %}
         
         {% if site.data.website.inject_code.add_code_to_footer_markdown %}
-            {{ site.data.website.inject_code.add_code_to_footer_markdown | textilize }}
+            {{ site.data.website.inject_code.add_code_to_footer_markdown | replace:'```','' }}
         {% endif %}
     </body>
 </html>
