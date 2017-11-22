@@ -69,64 +69,11 @@
         <link rel="stylesheet" href="/css/main.css" type="text/css">
         <script src="https://use.fontawesome.com/022f8d22c7.js"></script>
 
-        <!-- ANALYTICS
+        <!-- WEBSITE HEAD CODE INJECTION
         ======================================== -->
-        <!-- Google Analytics -->
-
-
-        <!-- Heap Analytics -->
-        
-        
-        
-        
-        
-        
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        
-        <!-- Bug Snag
-          ---------------------------------------->
-        <!--<script-->
-        <!--src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js"-->
-        <!--data-apikey="761b5e9432d781667f209d0876f10aef"></script>-->
-        
-        <!-- Google Analytics
-          ---------------------------------------->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109994972-1"></script>-->
-        <!--<script>-->
-        <!--  window.dataLayer = window.dataLayer || [];-->
-        <!--  function gtag(){dataLayer.push(arguments);}-->
-        <!--  gtag('js', new Date());-->
-        
-        <!--  gtag('config', 'UA-109994972-1');-->
-        <!--</script>-->
-        
-        <!-- Heap Analytics
-          ---------------------------------------->
-        <!--<script type="text/javascript">-->
-        <!--    window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};-->
-        <!--      heap.load("1998541003");-->
-        <!--</script>-->
-    
-        <!-- Kayako
-          ---------------------------------------->
-        <!--<script>(function(d,a){function c(){var b=d.createElement("script");b.async=!0;b.type="text/javascript";b.src=a._settings.messengerUrl;b.crossOrigin="anonymous";var c=d.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}window.kayako=a;a.readyQueue=[];a.newEmbedCode=!0;a.ready=function(b){a.readyQueue.push(b)};a._settings={apiUrl:"https://he-machine.kayako.com/api/v1",teamName:"H&E Machine",homeTitles:[{"locale":"en-us","translation":"Hello! 👋"}],homeSubtitles:[{"locale":"en-us","translation":"Welcome to H&E Machine. Let's chat — start a new conversation below."}],replyTimeLocale:"",messengerUrl:"https://he-machine.kayakocdn.com/messenger",realtimeUrl:"wss://kre.kayako.net/socket",widgets:{presence:{enabled:true},twitter:{enabled:false,twitterHandle:"null"},articles:{enabled:false,sectionId:1}},styles:{primaryColor:"#29683b",homeBackground:"#203927",homePattern:"https://assets.kayako.com/messenger/pattern-6.svg",homeTextColor:"#FFFFFF"}};window.attachEvent?window.attachEvent("onload",c):window.addEventListener("load",c,!1)})(document,window.kayako||{});</script>-->
-
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-        
-        
         {% if site.data.website.inject_code.add_code_to_head_markdown %}
             {{ site.data.website.inject_code.add_code_to_head_markdown | replace:'```','' }}
         {% endif %}
-        
-        
-
-        <!-- VERIFICATIONS
-        ======================================== -->
 
 
     </head>
@@ -171,6 +118,8 @@
         
         {% assign contentArrayLength = contentArray | size %}{% if contentArrayLength > 1  %}{{ contentArray.last }}{% endif %}
         
+        <!-- WEBSITE FOOTER CODE INJECTION
+        ======================================== -->
         {% if site.data.website.inject_code.add_code_to_footer_markdown %}
             {{ site.data.website.inject_code.add_code_to_footer_markdown | replace:'```','' }}
         {% endif %}
