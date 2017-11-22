@@ -69,18 +69,11 @@
         <link rel="stylesheet" href="/css/main.css" type="text/css">
         <script src="https://use.fontawesome.com/022f8d22c7.js"></script>
 
-        <!-- ANALYTICS
+        <!-- WEBSITE HEAD CODE INJECTION
         ======================================== -->
-        <!-- Google Analytics -->
-
-
-        <!-- Heap Analytics -->
-        
-
-        <!-- VERIFICATIONS
-        ======================================== -->
-
-
+        {% if site.data.website.inject_code.add_code_to_head_markdown %}
+            {{ site.data.website.inject_code.add_code_to_head_markdown | replace:'```','' }}
+        {% endif %}
     </head>
     <body class="{{ page_class }}">
         <!--[if lt IE 7]>
@@ -120,6 +113,13 @@
               c_header_nav__item.removeClass('is-touch');
             });
         </script>
+        
         {% assign contentArrayLength = contentArray | size %}{% if contentArrayLength > 1  %}{{ contentArray.last }}{% endif %}
+        
+        <!-- WEBSITE FOOTER CODE INJECTION
+        ======================================== -->
+        {% if site.data.website.inject_code.add_code_to_footer_markdown %}
+            {{ site.data.website.inject_code.add_code_to_footer_markdown | replace:'```','' }}
+        {% endif %}
     </body>
 </html>
