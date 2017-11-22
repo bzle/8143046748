@@ -1512,10 +1512,10 @@ select.o-selectize {
 }
 .o-alert {
     background-color: desaturate(darken($brand-secondary, 20%), 30%);
-    outline: 2px solid $white;
-    padding: 12px 18px;
+    // outline: 2px solid $white;
+    padding: 6px 18px;
     position: relative;
-    top: -20px;   
+    // top: -20px;
 }
 .o-alert strong {
     font-weight: 900;
