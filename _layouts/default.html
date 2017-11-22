@@ -30,8 +30,6 @@
             assign meta_robots = "noindex" %}{%
         elsif page.page_settings.no_follow %}{%
             assign meta_robots = "nofollow" %}{%
-        else %}{%
-            assign meta_robots = "" %}{%
         endif %}{%
 
         if meta_robots %}
