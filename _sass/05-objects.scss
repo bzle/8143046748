@@ -1640,6 +1640,9 @@ select.o-selectize {
     .u-space--bottom--half\@md {
         margin-bottom: $spacing-unit / 2;
     }
+    .u-space--bottom--quarter\@md {
+        margin-bottom: $spacing-unit / 4;
+    }
 }
 @include media(sm) {
     .u-space--top\@sm {
