@@ -119,9 +119,9 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
         
         
-        
-        {{ site.data.website.inject_code.add_code_to_head_markdown }}
-        
+        {% if site.data.website.inject_code.add_code_to_head_markdown %}
+            {{ site.data.website.inject_code.add_code_to_head_markdown }}
+        {% endif %}
         
         
 
@@ -168,6 +168,11 @@
               c_header_nav__item.removeClass('is-touch');
             });
         </script>
+        
         {% assign contentArrayLength = contentArray | size %}{% if contentArrayLength > 1  %}{{ contentArray.last }}{% endif %}
+        
+        {% if site.data.website.inject_code.add_code_to_footer_markdown %}
+            {{ site.data.website.inject_code.add_code_to_footer_markdown }}
+        {% endif %}
     </body>
 </html>
