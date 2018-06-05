@@ -63,3 +63,7 @@ assets:
 #  digest: true
 #  sources:
 #    - "_assets/folder"
+
+# https://jch.penibelst.de/
+compress_html:
+  blanklines: true
