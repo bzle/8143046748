@@ -67,8 +67,8 @@
 
         <!-- WEBSITE HEAD CODE INJECTION
         ======================================== -->
-        {% if site.data.website.inject_code.add_code_to_head_markdown %}
-            {{ site.data.website.inject_code.add_code_to_head_markdown | replace:'```','' }}
+        {% if site.data.website.inject_code.head_code_block %}
+            {{ site.data.website.inject_code.head_code_block }}
         {% endif %}
     </head>
     <body class="{{ page_class }}">
@@ -114,8 +114,8 @@
         
         <!-- WEBSITE FOOTER CODE INJECTION
         ======================================== -->
-        {% if site.data.website.inject_code.add_code_to_footer_markdown %}
-            {{ site.data.website.inject_code.add_code_to_footer_markdown | replace:'```','' }}
+        {% if site.data.website.inject_code.footer_code_block %}
+            {{ site.data.website.inject_code.footer_code_block }}
         {% endif %}
     </body>
 </html>
