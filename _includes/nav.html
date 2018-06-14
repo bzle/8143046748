@@ -17,7 +17,7 @@
             <p class="o-text">layout.parent_page: {{ layout.parent_page }}</p>
             <p class="o-text">sub_page.name: {{ sub_page.name }}</p>
         
-            {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
+            {% if page_url == main_nav_page.url %}
                 {% assign is_active = 'c-active' %}
             {% else %}
                 {% assign is_active = '' %}
@@ -38,7 +38,7 @@
                     <p class="o-text">layout.parent_page: {{ layout.parent_page }}</p>
                     <p class="o-text">sub_page.name: {{ sub_page.name }}</p>
                         
-                    {% if page_url == sub_page.url or layout.parent_page == sub_page.name %}
+                    {% if page_url == sub_page.url %}
                         {% assign is_active = 'c-active' %}
                     {% else %}
                         {% assign is_active = '' %}
