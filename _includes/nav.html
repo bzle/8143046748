@@ -18,14 +18,17 @@
 <!--<p class="o-text">main_nav_page.name: {{ main_nav_page.name }} <br></p>-->
 
     
-    {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
-        {% assign is_active = 'c-active' %}
-    {% else %}
-        {% assign is_active = '' %}
-    {% endif %}
+    
 
     {% if main_nav_page.sub_pages.size == 1 %}
         {% for sub_page in main_nav_page.sub_pages %}
+        
+            {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
+                {% assign is_active = 'c-active' %}
+            {% else %}
+                {% assign is_active = '' %}
+            {% endif %}
+            
             <li class="{{ nav_name }}__item">
                 <a class="{{ is_active }} {{ nav_name }}__page o-text--sm" href="{{ sub_page.url }}" {% if sub_page.open_in_new_tab %}target="_blank"{% endif %}><span class="{{ nav_name }}__page-inner">{{ sub_page.name }}</span></a>
             </li>
@@ -35,6 +38,13 @@
             <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
             <ul class="{{ nav_name }}__child-items">
                 {% for sub_page in main_nav_page.sub_pages %}
+                        
+                    {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
+                        {% assign is_active = 'c-active' %}
+                    {% else %}
+                        {% assign is_active = '' %}
+                    {% endif %}
+            
                     <li class="{{ nav_name }}__child-item">
                         <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--child o-text--sm" href="{{ sub_page.url }}" {% if sub_page.open_in_new_tab %}target="_blank"{% endif %}><span class="{{ nav_name }}__page-inner">{{ sub_page.name }}</span></a>
                     </li>
