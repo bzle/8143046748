@@ -6,19 +6,8 @@
 
 <ul>
 {% for main_nav_page in site.data.main_nav %}
-<!--<p class="o-text">I'm a page. <br></p>-->
     
     {% assign page_url = page.url | remove: ".html" | remove: "/index" %}
-    
-<!--<p class="o-text">page.url: {{ page.url }} <br></p>-->
-<!--<p class="o-text">page_url: {{ page_url }} <br></p>-->
-<!--<p class="o-text">page_url: {{ page_url }} <br></p>-->
-<!--<p class="o-text">main_nav_page.url: {{ main_nav_page.url }} <br></p>-->
-<!--<p class="o-text">layout.parent_page: {{ layout.parent_page }} <br></p>-->
-<!--<p class="o-text">main_nav_page.name: {{ main_nav_page.name }} <br></p>-->
-
-    
-    
 
     {% if main_nav_page.sub_pages.size == 1 %}
         {% for sub_page in main_nav_page.sub_pages %}
@@ -35,11 +24,11 @@
         {% endfor %}
     {% else %}
         <li class="{{ nav_name }}__item">
-            <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
+            <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.menu_item }}</span></a>
             <ul class="{{ nav_name }}__child-items">
                 {% for sub_page in main_nav_page.sub_pages %}
                         
-                    {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
+                    {% if page_url == sub_page.url or layout.parent_page == sub_page.name %}
                         {% assign is_active = 'c-active' %}
                     {% else %}
                         {% assign is_active = '' %}
