@@ -6,8 +6,11 @@
 
 <ul>
 {% for main_nav_page in site.data.main_nav %}
+<p class="o-text">I'm a page. <br></p>
     
     {% assign page_url = page.url | remove: ".html" | remove: "/index" %}
+    
+<p class="o-text">page_url: {{ page_url }} <br></p>
     
     {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
         {% assign is_active = 'c-active' %}
