@@ -1,44 +1,37 @@
-{% if include.nav_location == "header" %}{%
-    assign nav_name = "c-header-nav" %}{%
-elsif include.nav_location == "mobile" %}{%
-    assign nav_name = "c-mobile-nav" %}{%
-endif %}
-        <ul>{%
-        for main_nav_page in site.data.main_nav %}{%
-            if main_nav_page["external?"] %}{%
-                assign target = "_blank" %}{%
-            else %}{%
-                assign target = "" %}{%
-            endif %}{%
+{% if include.nav_location == "header" %}
+    {% assign nav_name = "c-header-nav" %}
+{% elsif include.nav_location == "mobile" %}
+    {% assign nav_name = "c-mobile-nav" %}
+{% endif %}
 
-            assign page_url = page.url | remove: ".html" | remove: "/index" %}{%
+<ul>
+{% for main_nav_page in site.data.main_nav %}
+    
+    {% assign page_url = page.url | remove: ".html" | remove: "/index" %}
+    
+    {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
+        {% assign is_active = 'c-active' %}
+    {% else %}
+        {% assign is_active = '' %}
+    {% endif %}
 
-            if page_url == "" %}{%
-                assign page_url = "/" %}{%
-            endif %}{%
-            if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}{%
-                assign is_active = 'c-active' %}{%
-            else %}{%
-                assign is_active = '' %}{%
-            endif %}{%
-
-            if main_nav_page.menu_item_type == "Parent" %}
-                <li class="{{ nav_name }}__item">
-                    <!-- <span class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm">{{ menu_page.name }}</span> -->
-                    <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
-                    <ul class="{{ nav_name }}__child-items">{%
-            elsif main_nav_page.menu_item_type == "Child" or main_nav_page.menu_item_type == "Last child" %}
-                        <li class="{{ nav_name }}__child-item">
-                            <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--child o-text--sm" href="{{ main_nav_page.url }}" target="{{ target }}"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
-                        </li>{%
-                if main_nav_page.menu_item_type == "Last child" %}
-                    </ul>
-                </li>{%
-                endif %}{%
-            else %}
-                <li class="{{ nav_name }}__item">
-                    <a class="{{ is_active }} {{ nav_name }}__page o-text--sm" href="{{ main_nav_page.url }}" target="{{ target }}"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
-                </li>{%
-            endif %}{%
-        endfor %}
-        </ul>
+    {% if item.sub_pages.size == 1 %}
+        {% for sub_page in item.sub_pages %}
+            <li class="{{ nav_name }}__item">
+                <a class="{{ is_active }} {{ nav_name }}__page o-text--sm" href="{{ main_nav_page.url }}" {% if sub_page.open_in_new_tab %}target="_blank"{% endif %}><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li class="{{ nav_name }}__item">
+            <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--parent o-text--sm"><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
+            <ul class="{{ nav_name }}__child-items">
+                {% for sub_page in main_nav_page.sub_pages %}
+                    <li class="{{ nav_name }}__child-item">
+                        <a class="{{ is_active }} {{ nav_name }}__page {{ nav_name }}__page--child o-text--sm" href="{{ main_nav_page.url }}" {% if sub_page.open_in_new_tab %}target="_blank"{% endif %}><span class="{{ nav_name }}__page-inner">{{ main_nav_page.name }}</span></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+{% endfor %}
+</ul>
