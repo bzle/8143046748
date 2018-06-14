@@ -12,6 +12,11 @@
     {% if main_nav_page.sub_pages.size == 1 %}
         {% for sub_page in main_nav_page.sub_pages %}
         
+            <p class="o-text">page_url: {{ page_url }}</p>
+            <p class="o-text">sub_page.url: {{ sub_page.url }}</p>
+            <p class="o-text">layout.parent_page: {{ layout.parent_page }}</p>
+            <p class="o-text">sub_page.name: {{ sub_page.name }}</p>
+        
             {% if page_url == main_nav_page.url or layout.parent_page == main_nav_page.name %}
                 {% assign is_active = 'c-active' %}
             {% else %}
@@ -28,10 +33,10 @@
             <ul class="{{ nav_name }}__child-items">
                 {% for sub_page in main_nav_page.sub_pages %}
                         
-                    <p>page_url: {{ page_url }}</p>
-                    <p>sub_page.url: {{ sub_page.url }}</p>
-                    <p>layout.parent_page: {{ layout.parent_page }}</p>
-                    <p>sub_page.name: {{ sub_page.name }}</p>
+                    <p class="o-text">page_url: {{ page_url }}</p>
+                    <p class="o-text">sub_page.url: {{ sub_page.url }}</p>
+                    <p class="o-text">layout.parent_page: {{ layout.parent_page }}</p>
+                    <p class="o-text">sub_page.name: {{ sub_page.name }}</p>
                         
                     {% if page_url == sub_page.url or layout.parent_page == sub_page.name %}
                         {% assign is_active = 'c-active' %}
