@@ -799,12 +799,13 @@ h3,
 
 .o-img {
     max-width: 100%;
+    height: auto;
 }
-@include media(xlg) {
-    .o-img {
-        height: auto;
-    }
-}
+// @include media(xlg) {
+//     .o-img {
+//         height: auto;
+//     }
+// }
 .o-img--fill {
     width: 100%;
 }
